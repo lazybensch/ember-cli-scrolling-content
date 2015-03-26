@@ -8,8 +8,19 @@ export default Ember.Component.extend({
   duration: null,
   offset: null,
 
+  mouseEnter: function(){
+    this.$().stop();
+    this.$().animate({scrollLeft: this.get('offset')}, this.get('duration'), 'linear');
+  },
+  mouseLeave: function(){
+    var scrollRatio = this.$().scrollLeft() / this.get('offset');
+    this.$().stop();
+    this.$().animate({scrollLeft: 0}, this.get('duration') * scrollRatio, 'linear');
+  },
+
   didInsertElement: function() {
 
+    this.$().css('background', 'lime');
     this.$().css('white-space', 'nowrap');
     this.$().css('overflow', 'visible');
     this.$().css('float', 'left');
@@ -25,16 +36,5 @@ export default Ember.Component.extend({
       this.set('duration', this.get('offset') * 10 );
     }
 
-    var _this = this;
-    this.$().mouseover(function() {
-      _this.$().stop();
-      _this.$().animate({scrollLeft: _this.get('offset')}, _this.get('duration'), 'linear');
-    });
-
-    this.$().mouseout(function() {
-      var scrollRatio = _this.$().scrollLeft() / _this.get('offset');
-      _this.$().stop();
-      _this.$().animate({scrollLeft: 0}, _this.get('duration') * scrollRatio, 'linear');
-    });
   }
 });
