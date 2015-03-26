@@ -22,6 +22,7 @@ export default Ember.Component.extend({
 
   didInsertElement: function() {
 
+    this.$().css('display', 'block');
     this.$().css('white-space', 'nowrap');
     this.$().css('overflow', 'visible');
     this.$().css('float', 'left');
