@@ -5,9 +5,7 @@ export default Ember.Component.extend({
   layout: layout,
   classNames: 'scroll-content',
 
-  duration: null,
-  offset: null,
-  speed: null,
+  speed: 1,
 
   mouseEnter: function() {
     this.$().stop();
@@ -32,6 +30,14 @@ export default Ember.Component.extend({
     return this.$().width();
   }.property(),
 
+  offset: function() {
+    return this.get('innerWidth') - this.get('outerWidth');
+  }.property('innerWidth', 'outerWidth'),
+
+  duration: function() {
+    return this.get('offset') * 10 / this.get('speed');
+  }.property('offset', 'speed'),
+
   didInsertElement: function() {
     this.$().css({
       'display': 'block',
@@ -39,16 +45,5 @@ export default Ember.Component.extend({
       'overflow': 'hidden',
       'float': 'none',
     });
-
-    if (Ember.typeOf(this.get('offset')) === 'null') {
-      this.set('offset', this.get('innerWidth') - this.get('outerWidth'));
-    }
-    if (Ember.typeOf(this.get('duration')) === 'null') {
-      this.set('duration', this.get('offset') * 10 );
-    }
-    if (Ember.typeOf(this.get('speed')) != 'null') {
-      this.set('duration', this.get('duration') / this.get('speed') );
-    }
-
   }
 });
