@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   classNames: 'scroll-content',
 
   speed: 1,
+  dependsOn: null,
 
   mouseEnter: function() {
     this.$().stop();
@@ -24,11 +25,11 @@ export default Ember.Component.extend({
     var innerWidth = this.$().width();
     this.$().css({'overflow': 'hidden', 'float': 'none'});
     return innerWidth;
-  }.property(),
+  }.property('dependsOn'),
 
   outerWidth: function() {
     return this.$().width();
-  }.property(),
+  }.property('dependsOn'),
 
   offset: function() {
     return this.get('innerWidth') - this.get('outerWidth');
