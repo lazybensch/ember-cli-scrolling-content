@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
   duration: null,
   offset: null,
+  speed: null,
 
   mouseEnter: function(){
     this.$().stop();
@@ -36,6 +37,9 @@ export default Ember.Component.extend({
     }
     if (Ember.typeOf(this.get('duration')) === 'null') {
       this.set('duration', this.get('offset') * 10 );
+    }
+    if (Ember.typeOf(this.get('speed')) != 'null') {
+      this.set('duration', this.get('duration') / this.get('speed') );
     }
 
   }
