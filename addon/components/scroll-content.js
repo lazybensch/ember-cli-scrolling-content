@@ -10,17 +10,18 @@ export default Ember.Component.extend({
 
   mouseEnter: function(){
     this.$().stop();
-    this.$().animate({scrollLeft: this.get('offset')}, this.get('duration'), 'linear');
+    var scrollRatio = (this.get('offset') - this.$().scrollLeft()) / this.get('offset');
+    this.$().animate({scrollLeft: this.get('offset')}, this.get('duration') * scrollRatio, 'linear');
   },
+
   mouseLeave: function(){
-    var scrollRatio = this.$().scrollLeft() / this.get('offset');
     this.$().stop();
+    var scrollRatio = this.$().scrollLeft() / this.get('offset');
     this.$().animate({scrollLeft: 0}, this.get('duration') * scrollRatio, 'linear');
   },
 
   didInsertElement: function() {
 
-    this.$().css('background', 'lime');
     this.$().css('white-space', 'nowrap');
     this.$().css('overflow', 'visible');
     this.$().css('float', 'left');
