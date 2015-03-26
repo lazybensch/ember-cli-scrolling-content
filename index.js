@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-scroll-on-hover'
+  name: 'ember-cli-scrolling-content'
 };

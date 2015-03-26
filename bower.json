@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-scroll-on-hover",
+  "name": "ember-cli-scrolling-content",
   "dependencies": {
     "jquery": "^1.11.1",
     "ember": "1.10.0",
