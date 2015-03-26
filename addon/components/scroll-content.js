@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   offset: null,
 
   didInsertElement: function() {
+
     this.$().css('white-space', 'nowrap');
     this.$().css('overflow', 'visible');
     this.$().css('float', 'left');
@@ -16,26 +17,24 @@ export default Ember.Component.extend({
     this.$().css('overflow', 'hidden');
     this.$().css('float', 'none');
     var outerWidth = this.$().width();
+
     if (Ember.typeOf(this.get('offset')) === 'null') {
       this.set('offset', innerWidth - outerWidth);
     }
     if (Ember.typeOf(this.get('duration')) === 'null') {
-      this.set('duration', this.get('offset') * 10 )
+      this.set('duration', this.get('offset') * 10 );
     }
 
     var _this = this;
     this.$().mouseover(function() {
-      Ember.run.scheduleOnce('afterRender', this, function(){
-        _this.$().stop();
-        _this.$().animate({scrollLeft: _this.get('offset')}, _this.get('duration'), 'linear');
-      });
+      _this.$().stop();
+      _this.$().animate({scrollLeft: _this.get('offset')}, _this.get('duration'), 'linear');
     });
 
     this.$().mouseout(function() {
-      Ember.run.scheduleOnce('afterRender', this, function(){
-        _this.$().stop();
-        _this.$().animate({scrollLeft: 0}, _this.get('duration'), 'linear');
-      });
+      var scrollRatio = _this.$().scrollLeft() / _this.get('offset');
+      _this.$().stop();
+      _this.$().animate({scrollLeft: 0}, _this.get('duration') * scrollRatio, 'linear');
     });
   }
 });
