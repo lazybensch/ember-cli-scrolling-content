@@ -39,7 +39,7 @@
     "ember-cli-scrolling-content",
     "scroll",
     "scrolling",
-    "component",
+    "component"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
