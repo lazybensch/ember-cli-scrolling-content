@@ -8,16 +8,36 @@ export default Ember.Component.extend({
   speed: 1,
   dependsOn: null,
 
-  mouseEnter: function() {
+  scroll: function(forward) {
+    var scrollRatio, _this = this;
     this.$().stop();
-    var scrollRatio = (this.get('offset') - this.$().scrollLeft()) / this.get('offset');
-    this.$().animate({scrollLeft: this.get('offset')}, this.get('duration') * scrollRatio, 'linear');
+
+    if (forward) {
+      scrollRatio = (this.get('offset') - this.$().scrollLeft()) / this.get('offset');
+    } else {
+      scrollRatio = this.$().scrollLeft() / this.get('offset');
+    }
+
+    this.$().animate(
+      {scrollLeft: forward ? this.get('offset') : 0},
+      this.get('duration') * scrollRatio,
+      'linear',
+      function() {
+        if (forward) {
+          _this.sendAction('didScrollForward');
+        } else {
+          _this.sendAction('didScrollBackward');
+        }
+      }
+    );
+  },
+
+  mouseEnter: function() {
+    this.scroll(true);
   },
 
   mouseLeave: function() {
-    this.$().stop();
-    var scrollRatio = this.$().scrollLeft() / this.get('offset');
-    this.$().animate({scrollLeft: 0}, this.get('duration') * scrollRatio, 'linear');
+    this.scroll(false);
   },
 
   innerWidth: function() {
