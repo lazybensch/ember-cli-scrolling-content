@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
   speed: 1,
   dependsOn: null,
+  scrollForward: false,
 
   scroll: function(forward) {
     var scrollRatio, _this = this;
@@ -32,12 +33,16 @@ export default Ember.Component.extend({
     );
   },
 
+  changeDirection: function() {
+    this.scroll( this.get('scrollForward') );
+  }.observes('scrollForward'),
+
   mouseEnter: function() {
-    this.scroll(true);
+    this.set('scrollForward', true);
   },
 
   mouseLeave: function() {
-    this.scroll(false);
+    this.set('scrollForward', false);
   },
 
   innerWidth: function() {
