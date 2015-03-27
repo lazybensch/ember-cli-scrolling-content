@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   speed: 1,
   dependsOn: null,
   scrollForward: false,
+  hover: true,
 
   scroll: function(forward) {
     var scrollRatio, _this = this;
@@ -38,11 +39,15 @@ export default Ember.Component.extend({
   }.observes('scrollForward'),
 
   mouseEnter: function() {
-    this.set('scrollForward', true);
+    if (this.get('hover')) {
+      this.set('scrollForward', true);
+    }
   },
 
   mouseLeave: function() {
-    this.set('scrollForward', false);
+    if (this.get('hover')) {
+      this.set('scrollForward', false);
+    }
   },
 
   innerWidth: function() {
