@@ -34,13 +34,37 @@
     <section>
       {{!- BEGIN-SNIPPET complex-dom -}}
       <div class='parent'>
-        {{#scrolling-content}}
+        {{#scrolling-content didScrollForward='bla' didScrollBackward='blub'}}
           <nav>
             <div> one </div>
             <div> two </div>
             <div> three </div>
             <div> four </div>
           </nav>
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
+
+  <article>
+    <header> Callbacks </header>
+    <aside>
+      <p>
+        ember-cli-scrolling-content exposes two events that indicate when
+        the content scrolled all the way to the right, or back to the left.
+      </p>
+    {{code-snippet name="callbacks.hbs"}}
+    {{code-snippet name="actions.js"}}
+    </aside>
+
+    <section>
+      {{!- BEGIN-SNIPPET callbacks -}}
+      <div class='parent'>
+        {{#scrolling-content didScrollForward='foo'
+                            didScrollBackward='bar'}}
+          A B C D E F G H I J K L M
+          N O P Q R S T U V W X Y Z
         {{/scrolling-content}}
       </div>
       {{!- END-SNIPPET }}
