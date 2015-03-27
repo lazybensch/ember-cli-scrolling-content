@@ -1,5 +1,11 @@
+body {
+  text-align: center;
+}
+
 .main {
   width: 842px;
+  margin: auto;
+  text-align: initial;
 }
 
 article {
@@ -15,19 +21,25 @@ header {
   font-size: initial;
   display: inline-block;
   width: 100%;
-  background: yellow;
+  background: lightgray;
   line-height: 30px;
   height: 30px;
   margin-bottom: 20px;
 }
+
 p {
   display: inline-block;
   margin-bottom: 10px;
-  background: #f8f8f8;
+  background: lightgray;
   padding: 10px;
   box-sizing: border-box;
   margin-top: 0;
 }
+
+pre {
+  background: lightgray !important;
+}
+
 aside {
   font-size: initial;
   display: inline-block;
@@ -41,20 +53,22 @@ section {
   display: inline-block;
   width: 390px;
   margin-left: 10px;
-  background: lime;
+  background: lightblue;
 }
 
 .parent {
-  width: 100px;
+  width: 390px;
+  font-size: 40px;
 }
 
-.parent2 {
-  width: 300px;
+nav {
+  height: 50px;
 }
 
-.test {
-  width: 20px;
-  height: 10px;
-  background: red;
+nav div {
+  text-align: center;
   display: inline-block;
+  width: 160px;
+  height: 50px;
+  background: lightcoral;
 }
