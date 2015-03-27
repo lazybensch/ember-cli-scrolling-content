@@ -1,25 +1,32 @@
-# Ember-cli-scroll-on-hover
+# Ember-cli-sync-for-each
 
-This README outlines the details of collaborating on this Ember addon.
+This block component will horizontally scroll the content you provide whenever a user hovers over it.
+Check out [this Demo](http://lazybensch.github.io/ember-cli-scrolling-content) which also is an interactive documentation.
+
+## simple usage
+
+```html
+{{#scrolling-content}}
+    //.. the html that should scroll horizontally on mouse-over
+{{/scrolling-content}}
+```
 
 ## Installation
 
-* `git clone` this repository
+To use this addon in your project, just type:
+```
+$ ember install:addon ember-cli-scrolling-content
+```
+or for older versions of ember-cli *(pre 1.4.0)*:
+```
+$ npm install --save-dev ember-cli-scrolling-content
+```
+
+## Contributing
+
+Im happy about everyone that wants to contribute, even opening an issue on github. However if you want to contribute to the code just follow the setup instructions below.
+
+* `git clone https://github.com/lazybensch/ember-cli-scrolling-content`
+* `cd ember-cli-scrolling-content`
 * `npm install`
 * `bower install`
-
-## Running
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
