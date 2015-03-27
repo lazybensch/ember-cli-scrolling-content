@@ -1,4 +1,4 @@
-# Ember-cli-sync-for-each
+# Ember-cli-scrolling-content
 
 This block component will horizontally scroll the content you provide whenever a user hovers over it.
 
