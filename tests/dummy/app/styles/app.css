@@ -63,6 +63,9 @@ section {
   margin-left: 10px;
   background: lightblue;
 }
+section.center {
+  text-align: center;
+}
 
 .parent {
   width: 390px;
@@ -74,14 +77,16 @@ input {
   font-size: 30px;
 }
 
-nav {
-  height: 50px;
-}
-
 nav div {
   text-align: center;
   display: inline-block;
   width: 160px;
   height: 50px;
   background: lightcoral;
+}
+
+nav div.footer {
+  display: block;
+  width: 500px;
+  margin-top: 10px;
 }

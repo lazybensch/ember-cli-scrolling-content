@@ -1,4 +1,7 @@
 <div class='main'>
+
+  <h3> Basics </h3>
+
   <article>
     <header> Simple Usage </header>
     <aside>
@@ -11,14 +14,14 @@
     </aside>
 
     <section>
-      {{!- BEGIN-SNIPPET simple-usage -}}
-      <div class='parent'>
-        {{#scrolling-content}}
-          A B C D E F G H I J K L M
-          N O P Q R S T U V W X Y Z
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
+{{!- BEGIN-SNIPPET simple-usage -}}
+<div class='parent'>
+  {{#scrolling-content}}
+    A B C D E F G H I J K L M
+    N O P Q R S T U V W X Y Z
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
     </section>
   </article>
 
@@ -32,42 +35,18 @@
     </aside>
 
     <section>
-      {{!- BEGIN-SNIPPET complex-dom -}}
-      <div class='parent'>
-        {{#scrolling-content didScrollForward='bla' didScrollBackward='blub'}}
-          <nav>
-            <div> one </div>
-            <div> two </div>
-            <div> three </div>
-            <div> four </div>
-          </nav>
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
-    </section>
-  </article>
-
-  <article>
-    <header> Callbacks </header>
-    <aside>
-      <p>
-        ember-cli-scrolling-content exposes two events that indicate when
-        the content scrolled all the way to the right, or back to the left.
-      </p>
-    {{code-snippet name="callbacks.hbs"}}
-    {{code-snippet name="actions.js"}}
-    </aside>
-
-    <section>
-      {{!- BEGIN-SNIPPET callbacks -}}
-      <div class='parent'>
-        {{#scrolling-content didScrollForward='foo'
-                            didScrollBackward='bar'}}
-          A B C D E F G H I J K L M
-          N O P Q R S T U V W X Y Z
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
+{{!- BEGIN-SNIPPET complex-dom -}}
+<div class='parent'>
+  {{#scrolling-content}}
+    <nav>
+      <div> one </div>
+      <div> two </div>
+      <div> three </div>
+      <div class='footer'> four </div>
+    </nav>
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
     </section>
   </article>
 
@@ -83,18 +62,18 @@
     </aside>
 
     <section>
-      {{!- BEGIN-SNIPPET adjustable-scroll -}}
-      <div class='parent'>
-        {{#scrolling-content speed=2}}
-          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-          17 18 19 20 21 22 23 24 25 26 27 28 29
-        {{/scrolling-content}}
+{{!- BEGIN-SNIPPET adjustable-scroll -}}
+<div class='parent'>
+  {{#scrolling-content speed=2}}
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+    17 18 19 20 21 22 23 24 25 26 27 28 29
+  {{/scrolling-content}}
 
-        {{#scrolling-content speed=2}}
-          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
+  {{#scrolling-content speed=2}}
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
     </section>
   </article>
 
@@ -111,18 +90,18 @@
     </aside>
 
     <section>
-      {{!- BEGIN-SNIPPET absolute-scroll -}}
-      <div class='parent'>
-        {{#scrolling-content duration=2000}}
-          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-          17 18 19 20 21 22 23 24 25 26 27 28 29
-        {{/scrolling-content}}
+{{!- BEGIN-SNIPPET absolute-scroll -}}
+<div class='parent'>
+  {{#scrolling-content duration=2000}}
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+    17 18 19 20 21 22 23 24 25 26 27 28 29
+  {{/scrolling-content}}
 
-        {{#scrolling-content duration=2000}}
-          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
+  {{#scrolling-content duration=2000}}
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
     </section>
   </article>
 
@@ -139,13 +118,14 @@
     </aside>
 
     <section>
-      {{!- BEGIN-SNIPPET custom-tag -}}
-      <div class='parent'>
-        {{#scrolling-content duration=0 tagName='li' classNames='list-item'}}
-          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
+{{!- BEGIN-SNIPPET custom-tag -}}
+<div class='parent'>
+  {{#scrolling-content duration=0 tagName='li'
+                               classNames='list-item'}}
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
     </section>
   </article>
 
@@ -161,14 +141,106 @@
     </aside>
 
     <section>
-      {{!- BEGIN-SNIPPET resize -}}
-      {{input value=value}}
-      <div class='parent'>
-        {{#scrolling-content dependsOn=value}}
-          {{value}}
-        {{/scrolling-content}}
-      </div>
-      {{!- END-SNIPPET }}
+{{!- BEGIN-SNIPPET resize -}}
+{{input value=value}}
+<div class='parent'>
+  {{#scrolling-content dependsOn=value}}
+    {{value}}
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
+    </section>
+  </article>
+
+  <h3> Advanced </h3>
+
+  <article>
+    <header> Callbacks </header>
+    <aside>
+      <p>
+        ember-cli-scrolling-content exposes two events that indicate when
+        the content scrolled all the way to the right, or back to the left.
+      </p>
+    {{code-snippet name="callbacks.hbs"}}
+    {{code-snippet name="foo-bar.js"}}
+    </aside>
+
+    <section>
+{{!- BEGIN-SNIPPET callbacks -}}
+<div class='parent'>
+  {{#scrolling-content didScrollForward='foo'
+                      didScrollBackward='bar'}}
+    A B C D E F G H I J K L M
+    N O P Q R S T U V W X Y Z
+  {{/scrolling-content}}
+</div>
+{{!- END-SNIPPET }}
+    </section>
+  </article>
+
+  <article>
+    <header> Control scrolling </header>
+    <aside>
+      <p>
+        You can programmatically set the scroll direction of your content by
+        setting the scrollForward property to either true or false. If you
+        combine this functionality with the didScrollForward/Backward events
+        described above you can produce quite complex behaviour. For example
+        could you implement a scrolling-content that automatically scrolls
+        back after is has reached the end.
+      </p>
+    {{code-snippet name="scrolling-control.hbs"}}
+    {{code-snippet name="toggle-scrolling.js"}}
+    </aside>
+
+    <section class='center'>
+{{!- BEGIN-SNIPPET scrolling-control -}}
+<div class='parent'>
+  {{#scrolling-content scrollForward=scrollForward}}
+    A B C D E F G H I J K L M
+    N O P Q R S T U V W X Y Z
+  {{/scrolling-content}}
+</div>
+<button {{action 'toggleScrolling' on='click'}}>
+  change scrolling direction
+</button>
+{{!- END-SNIPPET }}
+    </section>
+  </article>
+
+  <article>
+    <header> disable hover </header>
+    <aside>
+      <p>
+          This is a more advanced example that is using a few concepts introduced above.
+          by setting the components <b>hover</b> property to false it will not react to the users
+          mouse anymore. Instead we control the scrolling with the <b>started</b> property and
+          use the <b>didScrollForward</b> hook to let the component automatically scroll back
+          once it scrolled all the way to the right.
+      </p>
+    {{code-snippet name="advanced-template.hbs"}}
+    {{code-snippet name="advanced-actions.js"}}
+    </aside>
+
+    <section class='center'>
+{{!- BEGIN-SNIPPET advanced-template -}}
+<div class='parent'>
+  {{#scrolling-content scrollForward=started
+                    didScrollForward='goBack'
+                               hover=false}}
+    <nav>
+      <div> one </div>
+      <div> two </div>
+      <div> three </div>
+      <div class='footer'> four </div>
+    </nav>
+
+  {{/scrolling-content}}
+</div>
+<button {{action 'startScrolling' on='click'}}>
+  start scrolling
+</button>
+{{!- END-SNIPPET }}
     </section>
   </article>
 </div>
