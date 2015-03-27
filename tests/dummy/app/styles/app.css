@@ -18,6 +18,9 @@ article {
 }
 
 header {
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
   font-size: initial;
   display: inline-block;
   width: 100%;
