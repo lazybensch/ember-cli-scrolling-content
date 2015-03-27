@@ -61,6 +61,11 @@ section {
   font-size: 40px;
 }
 
+input {
+  width: 384px;
+  font-size: 30px;
+}
+
 nav {
   height: 50px;
 }
