@@ -1,3 +1,49 @@
+.main {
+  width: 842px;
+}
+
+article {
+  font-size: 0;
+  border: 1px solid black;
+  margin: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 20px;
+}
+
+header {
+  font-size: initial;
+  display: inline-block;
+  width: 100%;
+  background: yellow;
+  line-height: 30px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+p {
+  display: inline-block;
+  margin-bottom: 10px;
+  background: #f8f8f8;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+aside {
+  font-size: initial;
+  display: inline-block;
+  width: 390px;
+  margin-right: 10px;
+}
+
+section {
+  vertical-align: top;
+  font-size: initial;
+  display: inline-block;
+  width: 390px;
+  margin-left: 10px;
+  background: lime;
+}
+
 .parent {
   width: 100px;
 }

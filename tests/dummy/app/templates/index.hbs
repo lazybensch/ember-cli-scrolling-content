@@ -1,136 +1,144 @@
-<section>
-  <header>
-    Simple Usage
-  </header>
-  <p>
-    The scrolling content will always fit to its parent element. So if
-    we provide a parent div with a width of 100px, our content will
-    scroll - on hover - in this defined space.
-  </p>
+<div class='main'>
+  <article>
+    <header> Simple Usage </header>
+    <aside>
+      <p>
+        The scrolling content will always fit to its parent element. So if
+        we provide a parent div with a width of 100px, our content will
+        scroll - on hover - in this defined space.
+      </p>
+    {{code-snippet name="simple-usage.hbs"}}
+    </aside>
 
-  {{code-snippet name="simple-usage.hbs"}}
+    <section>
+      {{!- BEGIN-SNIPPET simple-usage -}}
+      <div class='parent'>
+        {{#scrolling-content}}
+          A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
 
-  {{!- BEGIN-SNIPPET simple-usage -}}
-  <div class='parent'>
-    {{#scrolling-content}}
-      A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-    {{/scrolling-content}}
-  </div>
-  {{!- END-SNIPPET }}
-</section>
+  <article>
+    <header> Complex Dom </header>
+    <aside>
+      <p>
+        scrolling-content can not only handle raw text, but any html you provide.
+      </p>
+    {{code-snippet name="complex-dom.hbs"}}
+    </aside>
 
-<section>
-  <header>
-    Complex Dom
-  </header>
-  <p>
-    scrolling-content can not only handle raw text, but any html you provide.
-  </p>
+    <section>
+      {{!- BEGIN-SNIPPET complex-dom -}}
+      <div class='parent'>
+        {{#scrolling-content}}
+          <nav>
+            <div> one </div>
+            <div> two </div>
+            <div> three </div>
+            <div> four </div>
+          </nav>
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
 
-  {{code-snippet name="complex-dom.hbs"}}
+  <article>
+    <header> Adjustable scroll speed </header>
+    <aside>
+      <p>
+        scrolling-content will (by default) scroll through its content with a reasonable
+        pixel-per-second. You can slow down by providing a speed value between 0 and 1 and
+        increase scrolling speed by providing a value above 1.
+      </p>
+    {{code-snippet name="adjustable-scroll.hbs"}}
+    </aside>
 
-  {{!- BEGIN-SNIPPET complex-dom -}}
-  <div class='parent'>
-    {{#scrolling-content}}
-      <nav>
-        <div> one </div>
-        <div> two </div>
-        <div> three </div>
-        <div> four </div>
-      </nav>
-    {{/scrolling-content}}
-  </div>
-  {{!- END-SNIPPET }}
-</section>
+    <section>
+      {{!- BEGIN-SNIPPET adjustable-scroll -}}
+      <div class='parent'>
+        {{#scrolling-content speed=2}}
+          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+        {{/scrolling-content}}
 
-<section>
-  <header>
-    Adjustable scroll speed
-  </header>
-  <p>
-    scrolling-content will (by default) scroll through its content with a reasonable
-    pixel-per-second. You can slow down by providing a speed value between 0 and 1 and
-    increase scrolling speed by providing a value above 1.
-  </p>
+        {{#scrolling-content speed=2}}
+          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
 
-  {{code-snippet name="adjustable-scroll.hbs"}}
+  <article>
+    <header> Absolute scroll duration </header>
+    <aside>
+      <p>
+        Sometimes however it would be nice to scroll through the content in a absolute
+        duration. Maybe you want the scrolling animation to hit the end always after
+        2 seconds no matter how long the content is. Note how the shorter text now scrolls
+        slower to take the same absolute scrolling time.
+      </p>
+    {{code-snippet name="absolute-scroll.hbs"}}
+    </aside>
 
-  {{!- BEGIN-SNIPPET adjustable-scroll -}}
-  <div class='parent'>
-    {{#scrolling-content speed=2}}
-      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
-    {{/scrolling-content}}
+    <section>
+      {{!- BEGIN-SNIPPET absolute-scroll -}}
+      <div class='parent'>
+        {{#scrolling-content duration=2000}}
+          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+        {{/scrolling-content}}
 
-    {{#scrolling-content speed=2}}
-      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-    {{/scrolling-content}}
-  </div>
-  {{!- END-SNIPPET }}
-</section>
+        {{#scrolling-content duration=2000}}
+          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
 
-<section>
-  <header>
-    Absolute scroll duration
-  </header>
-  <p>
-    Sometimes however it would be nice to scroll through the content in a absolute
-    duration. Maybe you want the scrolling animation to hit the end always after
-    2 seconds no matter how long the content is. Note how the shorter text now scrolls
-    slower to take the same absolute scrolling time.
-  </p>
+  <article>
+    <header> Customizable tagName and class </header>
+    <aside>
+      <p>
+        You can freely customize the contents tag name and class.
+      </p>
+    {{code-snippet name="custom-tag.hbs"}}
+    </aside>
 
-  {{code-snippet name="absolute-scroll.hbs"}}
+    <section>
+      {{!- BEGIN-SNIPPET custom-tag -}}
+      <div class='parent'>
+        {{#scrolling-content tagName='li' classNames='list-item'}}
+          1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
 
-  {{!- BEGIN-SNIPPET absolute-scroll -}}
-  <div class='parent'>
-    {{#scrolling-content duration=2000}}
-      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
-    {{/scrolling-content}}
+  <article>
+    <header> Resizes when content changes </header>
+    <aside>
+      <p>
+        In rare cases your content can change over time. You can make the scrolling-content
+        component aware of the property in charge of that change and it will update to
+        adjust scrolling motion and speed.
+      </p>
+    {{code-snippet name="resize.hbs"}}
+    </aside>
 
-    {{#scrolling-content duration=2000}}
-      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-    {{/scrolling-content}}
-  </div>
-  {{!- END-SNIPPET }}
-</section>
-
-<section>
-  <header>
-    Customizable tagName and class
-  </header>
-  <p>
-    You can freely customize the contents tag name and class.
-  </p>
-
-  {{code-snippet name="custom-tag.hbs"}}
-
-  {{!- BEGIN-SNIPPET custom-tag -}}
-  <div class='parent'>
-    {{#scrolling-content tagName='li' classNames='list-item'}}
-      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-    {{/scrolling-content}}
-  </div>
-  {{!- END-SNIPPET }}
-</section>
-
-<section>
-  <header>
-    Resizes when content changes
-  </header>
-  <p>
-    In rare cases your content can change over time. You can make the scrolling-content
-    component aware of the property in charge of that change and it will update to
-    adjust scrolling motion and speed.
-  </p>
-
-  {{code-snippet name="resize.hbs"}}
-
-  {{!- BEGIN-SNIPPET resize -}}
-  {{input value=value}}
-  <div class='parent'>
-    {{#scrolling-content dependsOn=value}}
-      {{value}}
-    {{/scrolling-content}}
-  </div>
-  {{!- END-SNIPPET }}
-</section>
+    <section>
+      {{!- BEGIN-SNIPPET resize -}}
+      {{input value=value}}
+      <div class='parent'>
+        {{#scrolling-content dependsOn=value}}
+          {{value}}
+        {{/scrolling-content}}
+      </div>
+      {{!- END-SNIPPET }}
+    </section>
+  </article>
+</div>
