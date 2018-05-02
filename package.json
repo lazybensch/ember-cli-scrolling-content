@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-scrolling-content",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This block component will horizontally scroll the content you provide whenever a user hovers over it. Come check out the DEMO.",
   "keywords": [
     "ember-addon",
