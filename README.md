@@ -16,20 +16,16 @@ Check out [this Demo](http://lazybensch.github.io/ember-cli-scrolling-content) w
 
 ## Installation
 
-To use this addon in your project, just type:
 ```
-$ ember install:addon ember-cli-scrolling-content
-```
-or for older versions of ember-cli *(pre 1.4.0)*:
-```
-$ npm install --save-dev ember-cli-scrolling-content
+$ ember install ember-cli-scrolling-content
 ```
 
 ## Contributing
 
 Im happy about everyone that wants to contribute, even opening an issue on github. However if you want to contribute to the code just follow the setup instructions below.
 
-* `git clone https://github.com/lazybensch/ember-cli-scrolling-content`
-* `cd ember-cli-scrolling-content`
+* `git clone <repository-url>` this repository
+* `cd my-addon`
 * `npm install`
-* `bower install`
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
