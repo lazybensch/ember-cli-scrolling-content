@@ -1,80 +1,93 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed, get, observer } from '@ember/object';
+import $ from 'jquery';
 import layout from '../templates/components/scrolling-content';
 
-export default Ember.Component.extend({
-  layout: layout,
-  classNames: 'scrolling-content',
+export default Component.extend({
+  layout,
+  classNames: ['scrolling-content'],
 
   speed: 1,
   dependsOn: null,
-  scrollForward: false,
   hover: true,
+  scrollForward: true,
 
-  scroll: function(forward) {
-    var scrollRatio, _this = this;
-    this.$().stop();
+  innerWidth: computed('dependsOn', {
+    get() {
+      // Expressions order is important here
+      $(this.element).css({ overflow: 'visible', float: 'left' });
+      const innerWidth = $(this.element).width();
+      $(this.element).css({ overflow: 'hidden', float: 'none' });
 
-    if (forward) {
-      scrollRatio = (this.get('offset') - this.$().scrollLeft()) / this.get('offset');
-    } else {
-      scrollRatio = this.$().scrollLeft() / this.get('offset');
+      return innerWidth;
     }
+  }),
 
-    this.$().animate(
-      {scrollLeft: forward ? this.get('offset') : 0},
-      this.get('duration') * scrollRatio,
+  outerWidth: computed('dependsOn', {
+    get() {
+      return $(this.element).width();
+    }
+  }),
+
+  offset: computed('innerWidth', 'outerWidth', {
+    get() {
+      return get(this, 'innerWidth') - get(this, 'outerWidth');
+    }
+  }),
+
+  duration: computed('offset', 'speed', {
+    get() {
+      return get(this, 'offset') * 10 / get(this, 'speed');
+    }
+  }),
+
+  directionObserver: observer('scrollForward', function() {
+    this.scroll(this.scrollForward);
+  }),
+
+  didInsertElement() {
+    this._super(...arguments);
+
+    $(this.element).css({
+      display: 'block',
+      'white-space': 'nowrap',
+      overflow: 'hidden',
+      float: 'none'
+    });
+  },
+
+  scroll(forward) {
+    const offset = get(this, 'offset');
+    const duration = get(this, 'duration');
+    const scrollLeft = $(this.element).scrollLeft();
+    const scrollRatio = forward
+      ? (offset - scrollLeft) / offset
+      : scrollLeft / offset;
+
+    $(this.element).stop();
+
+    $(this.element).animate(
+      { scrollLeft: forward ? offset : 0 },
+      duration * scrollRatio,
       'linear',
-      function() {
+      () => {
         if (forward) {
-          _this.sendAction('didScrollForward');
+          this.onScrollForwardEnd();
         } else {
-          _this.sendAction('didScrollBackward');
+          this.onScrollBackwardEnd();
         }
       }
     );
   },
 
-  changeDirection: function() {
-    this.scroll( this.get('scrollForward') );
-  }.observes('scrollForward'),
+  onScrollForwardEnd() {},
+  onScrollBackwardEnd() {},
 
-  mouseEnter: function() {
-    if (this.get('hover')) {
-      this.set('scrollForward', true);
-    }
+  mouseEnter() {
+    this.hover && this.scroll(true);
   },
 
-  mouseLeave: function() {
-    if (this.get('hover')) {
-      this.set('scrollForward', false);
-    }
-  },
-
-  innerWidth: function() {
-    this.$().css({ 'overflow': 'visible', 'float': 'left', });
-    var innerWidth = this.$().width();
-    this.$().css({'overflow': 'hidden', 'float': 'none'});
-    return innerWidth;
-  }.property('dependsOn'),
-
-  outerWidth: function() {
-    return this.$().width();
-  }.property('dependsOn'),
-
-  offset: function() {
-    return this.get('innerWidth') - this.get('outerWidth');
-  }.property('innerWidth', 'outerWidth'),
-
-  duration: function() {
-    return this.get('offset') * 10 / this.get('speed');
-  }.property('offset', 'speed'),
-
-  didInsertElement: function() {
-    this.$().css({
-      'display': 'block',
-      'white-space': 'nowrap',
-      'overflow': 'hidden',
-      'float': 'none',
-    });
+  mouseLeave() {
+    this.hover && this.scroll(false);
   }
 });

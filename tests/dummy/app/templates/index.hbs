@@ -2,7 +2,7 @@
 
   <ul>
     <li>
-      install: <b>ember install:addon ember-cli-scrolling-content</b>
+      install: <b>ember install ember-cli-scrolling-content</b>
     </li>
     <li>
       don't miss the <a href='#advanced'>advanced section</a> below.
@@ -132,8 +132,11 @@
     <section>
 {{!- BEGIN-SNIPPET custom-tag -}}
 <div class='parent'>
-  {{#scrolling-content duration=0 tagName='li'
-                               classNames='list-item'}}
+  {{#scrolling-content 
+      duration=0 
+      tagName='li'
+      classNames='list-item'
+  }}
     1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
   {{/scrolling-content}}
 </div>
@@ -180,8 +183,10 @@
     <section>
 {{!- BEGIN-SNIPPET callbacks -}}
 <div class='parent'>
-  {{#scrolling-content didScrollForward='foo'
-                      didScrollBackward='bar'}}
+  {{#scrolling-content 
+      onScrollForwardEnd=(action foo)
+      didScrollBackward=(action bar)
+  }}
     A B C D E F G H I J K L M
     N O P Q R S T U V W X Y Z
   {{/scrolling-content}}
@@ -196,7 +201,7 @@
       <p>
         You can programmatically set the scroll direction of your content by
         setting the scrollForward property to either true or false. If you
-        combine this functionality with the didScrollForward/Backward events
+        combine this functionality with the onScrollForwardEnd/onScrollBackwardEnd events
         described above you can produce quite complex behaviour. For example
         could you implement a scrolling-content that automatically scrolls
         back after is has reached the end.
@@ -213,7 +218,7 @@
     N O P Q R S T U V W X Y Z
   {{/scrolling-content}}
 </div>
-<button {{action 'toggleScrolling' on='click'}}>
+<button onclick={{action toggleScrolling}}>
   change scrolling direction
 </button>
 {{!- END-SNIPPET }}
@@ -227,7 +232,7 @@
           This is a more advanced example that is using a few concepts introduced above.
           by setting the components <b>hover</b> property to false it will not react to the users
           mouse anymore. Instead we control the scrolling with the <b>scrollForward</b> property and
-          use the <b>didScrollForward</b> hook to let the component automatically scroll back
+          use the <b>onScrollForwardEnd</b> hook to let the component automatically scroll back
           once it scrolled all the way to the right.
       </p>
     {{code-snippet name="advanced-template.hbs"}}
@@ -237,19 +242,20 @@
     <section class='center'>
 {{!- BEGIN-SNIPPET advanced-template -}}
 <div class='parent'>
-  {{#scrolling-content scrollForward=started
-                    didScrollForward='goBack'
-                               hover=false}}
+  {{#scrolling-content 
+      scrollForward=started
+      onScrollForwardEnd=(action goBack)
+      hover=false
+  }}
     <nav>
       <div> one </div>
       <div> two </div>
       <div> three </div>
       <div class='footer'> four </div>
     </nav>
-
   {{/scrolling-content}}
 </div>
-<button {{action 'startScrolling' on='click'}}>
+<button onclick={{action startScrolling}}>
   start scrolling
 </button>
 {{!- END-SNIPPET }}
